@@ -4,38 +4,35 @@ export default function TextForm(props) {
   const handleupclick = () => {
     let newtext = text.toUpperCase();
     setText(newtext);
-    props.showAlert("Converted to upper case!","success");
+    props.showAlert("Converted to upper case!", "success");
   };
   const handlelowclick = () => {
     let newtext = text.toLowerCase();
     setText(newtext);
-    props.showAlert("Converted to lower case!","success");
+    props.showAlert("Converted to lower case!", "success");
   };
   const handleReverse = (event) => {
-    /* Convert string to array*/
     let strArr = text.split("");
-    /* Reverse array*/
     strArr = strArr.reverse();
-    /* Convert array to string*/
     let newText = strArr.join("");
     setText(newText);
-    props.showAlert("Text Reversed!","success");
+    props.showAlert("Text Reversed!", "success");
   };
   const handleclearclick = () => {
     let newtext = "";
     setText(newtext);
-    props.showAlert("Text Cleared!","success");
+    props.showAlert("Text Cleared!", "success");
   };
   const handleCopy = () => {
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
-    props.showAlert("Text Copied!","success");
+    props.showAlert("Text Copied!", "success");
   };
   const handleextraspaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
-    props.showAlert("Extra spaces removed!","success");
+    props.showAlert("Extra spaces removed!", "success");
   };
   const handleonchange = (event) => {
     console.log("onchange");
@@ -45,7 +42,7 @@ export default function TextForm(props) {
   return (
     <>
       <div
-        className="container "
+        className="container"
         style={{ color: props.mode === "light" ? "black" : "white" }}
       >
         <div className="mb-3">
@@ -62,37 +59,47 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <div className="d-flex  container my-3 mb-3 py-3">
-          <button className="btn btn-primary mx-2 my-1" onClick={handleupclick}>
+        <style>
+          {`
+            .btn-primary:hover {
+              background-color: var(--bs-success) !important;
+              border-color: var(--bs-success) !important;
+            }
+          `}
+        </style>
+        <div className="d-flex flex-column flex-md-row justify-content-md-between align-items-center my-3 mb-3 py-3">
+          <button className="btn btn-primary mx-12 my-1" onClick={handleupclick}>
             Convert to upper case
-          </button>{" "}
-          &nbsp;
-          <button className="btn btn-primary mx-2 my-1" onClick={handlelowclick}>
-            Convert to lower case
-          </button>{" "}
-          &nbsp;
-          <button className="btn btn-primary mx-2 my-1" onClick={handleReverse}>
-            Reverse
-          </button>{" "}
-          &nbsp;
-          <button className="btn btn-primary mx-2 my-1" onClick={handleclearclick}>
-            Clear text
           </button>
-          <button className="btn btn-primary mx-2 my-1" onClick={handleCopy}>
+          &nbsp;
+          <button className="btn btn-primary mx-12 my-1" onClick={handlelowclick}>
+            Convert to lower case
+          </button>
+          &nbsp;
+          <button className="btn btn-primary mx-12 my-1" onClick={handleReverse}>
+            Reverse the text
+          </button>
+          &nbsp;
+          <button className="btn btn-primary mx-12 my-1" onClick={handleCopy}>
             Copy text
           </button>
-          <button className="btn btn-primary mx-2 my-1" onClick={handleextraspaces}>
+          &nbsp;
+          <button className="btn btn-primary mx-12 my-1" onClick={handleextraspaces}>
             Remove extra spaces
+          </button>
+          &nbsp;
+          <button className="btn btn-primary mx-12 my-1" onClick={handleclearclick}>
+            Clear text
           </button>
         </div>
       </div>
       <div
-        className="container"
+        className="container mb-10"
         style={{ color: props.mode === "light" ? "black" : "white" }}
       >
-        <h1>YOUR TEXT SUMARRY</h1>
+        <h1>YOUR TEXT SUMMARY</h1>
         <p>
-          YOUR TEXT HAVE {text.split(" ").filter((element)=>{return element.length!== 0}).length} WORDS AND {text.length} CHARACTERS
+          YOUR TEXT HAVE {text.split(" ").filter((element) => { return element.length !== 0 }).length} WORDS AND {text.length} CHARACTERS
         </p>
         <p>{0.008 * text.split(" ").length} MINUTES READ</p>
         <h3>PREVIEW</h3>

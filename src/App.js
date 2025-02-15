@@ -2,7 +2,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import About from './components/About';
+// import About from './components/About';
 import { useState } from "react";
 import Alert from "./components/Alert";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -41,7 +41,7 @@ function App() {
         <div className="container">
            <Routes>
            Updated Route syntax for React Router v6 
-             <Route path="/about" element={<About mode={mode}/>} />
+             {/* <Route path="/about" element={<About mode={mode}/>} /> */}
             <Route path="/" element={<TextForm heading="YOUR DETAILS:" showAlert={showAlert} mode={mode} />} />
           </Routes> 
         </div>
